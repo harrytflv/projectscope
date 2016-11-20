@@ -10,6 +10,7 @@
         %th
           = metric_name.camelcase
           Metric
+      %th Resample
   %tbody
     - @projects.each do |project|
       %tr
@@ -19,6 +20,8 @@
             %td{:id => "#{project.name}_#{sample.try(:metric_name)}_metric"}
               = '%.2f'.try(:%,sample.try(:score) || 0.0)
               #{raw sample.try(:image)}
+        %td
+          = link_to 'Resample', resample_project_path(project.id), method: :put
 
 %br/
 

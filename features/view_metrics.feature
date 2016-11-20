@@ -30,6 +30,7 @@ Feature: View A Projects Metrics
     And I should see "3.4" within "#WebsiteOne_code_climate_metric"
     And I should see "0.7" within "#LocalSupport_github_metric"
     And I should see "0.6" within "#WebsiteOne_github_metric"
+    And I should see "Resample"
 
   @rake
   Scenario: update metrics for projects

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804055752) do
+ActiveRecord::Schema.define(version: 20161120204757) do
 
   create_table "configs", force: :cascade do |t|
     t.integer  "project_id"
@@ -24,15 +24,31 @@ ActiveRecord::Schema.define(version: 20160804055752) do
 
   add_index "configs", ["project_id"], name: "index_configs_on_project_id"
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
   create_table "metric_samples", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "metric_name"
     t.text     "encrypted_raw_data"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.string   "encrypted_raw_data_iv"
     t.float    "score"
     t.text     "image"
-    t.string   "encrypted_raw_data_iv"
   end
 
   add_index "metric_samples", ["project_id", "metric_name"], name: "index_metric_samples_on_project_id_and_metric_name"

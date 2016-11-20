@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :resample]
 
   http_basic_authenticate_with name: "cs169", password: ENV['PROJECTSCOPE_PASSWORD']
   
@@ -64,6 +64,12 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: 'Project was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # PUT /projects/1/resample
+  def resample
+    @project.resample_all_metrics
+    redirect_to projects_url, notice: 'Resample task is successfully added. Please refresh to see the updated data.'
   end
 
   private
