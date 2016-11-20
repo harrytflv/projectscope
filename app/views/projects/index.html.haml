@@ -18,6 +18,8 @@
             %td{:id => "#{project.name}_#{sample.try(:metric_name)}_metric"}
               = '%.2f'.try(:%,sample.try(:score) || 0.0)
               #{raw sample.try(:image)}
+          - else
+            %td
 
 %br/
 
