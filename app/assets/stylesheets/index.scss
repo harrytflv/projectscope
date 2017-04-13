@@ -18,19 +18,20 @@
    width: 16%;
 }
 
-#projectlist_new .metric_list {
+#projectlist_new {
     border-collapse: collapse;
     margin-right: auto;
 }
 
 .chart_place {
-  max-width: 200px;
+  width: 250px;
   margin: auto;
-  max-height: 150px;
+  max-height: 500px;
 }
 
-#projectlist_new .metric_list th, #projectlist_new .metric_list td {
-    border: 1px solid #ddd;
-    width: 200px;
-    max-width: 200px;
-}
+
+//#projectlist_new .metric_list th, #projectlist_new .metric_list td {
+//    border: 1px solid #ddd;
+//    width: 200px;
+//    max-width: 200px;
+//}

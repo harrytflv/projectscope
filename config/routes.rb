@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   	end
   end
 
-  root 'projects#index'
+  root 'projects#new_index'
   resources :whitelists
 
   get '/application/update_all_projects/', :to => 'application#update_all_projects', :as => 'update_all_projects'
@@ -26,5 +26,6 @@ Rails.application.routes.draw do
   get 'all_metrics/:id', :to => 'projects#all_metrics', :as => 'all_metrics'
   get 'projects/:id/metrics/:metric', :to => 'projects#get_metric_data'
   get '/charts', :to => 'projects#charts'
-
+  get 'projects/:id/new_edit', :to => 'projects#new_edit'
+  post 'projects/:id/new_update', :to => 'projects#new_update', :as => "update_metric"
 end

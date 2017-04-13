@@ -1,7 +1,6 @@
 
 function createTimeSeriesGraph(containerId, data) {
   // Divide the container
-  debugger
   var $container = $(document.getElementById(containerId)).css('position', 'relative');
   var detail_containerId = containerId + "-detail-container";
   var master_containerId = containerId + "-master-container";
@@ -35,7 +34,7 @@ function createTimeSeriesGraph(containerId, data) {
             enabled: false
         },
         title: {
-            text: 'Historical USD to EUR Exchange Rate'
+            text: 'Demo Metric'
         },
         subtitle: {
             text: 'Select an area by dragging across the lower chart'

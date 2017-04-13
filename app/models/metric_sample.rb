@@ -15,27 +15,15 @@
 
 class MetricSample < ActiveRecord::Base
   belongs_to :project
-  scope :latest_for, ->(metric_name) { where(:metric_name => metric_name).last }
-
   attr_encrypted :raw_data, :key => Figaro.env.attr_encrypted_key!
+
+  def self.latest_for metric_name
+    where(:metric_name => metric_name).last
+  end
 
   def self.min_date
 	earliest_metric = MetricSample.order(:created_at).first
 	earliest_metric.created_at.to_date unless earliest_metric.nil?
-  end
-
-  
-
-
-  def self.latest_metric(project_id, metric_name)
-    projects_samples = MetricSample.all.where(:project_id => project_id)
-
-    result = []
-    all_metrics(project_id).each do |metric_name|
-      result << projects_samples.latest_for(metric_name)
-    end
-
-    result
   end
 
 end

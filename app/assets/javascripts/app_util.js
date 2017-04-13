@@ -11,3 +11,15 @@ String.prototype.format = function() {
 function parseJSONData(JSONString) {
   return jQuery.parseJSON(JSONString)  
 }
+
+function toggle($targetContainer) {
+    if ($targetContainer.is(':visible')) {
+        $targetContainer.slideUp('fast');
+        return false;
+    } else {
+        //$targetContainer.attr('style', "display: none");
+        $targetContainer.slideDown('fast');
+        return true;
+    }
+
+}

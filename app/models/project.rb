@@ -48,16 +48,10 @@ class Project < ActiveRecord::Base
   end
 
   def latest_metric_samples
-    all_metrics.map do |metric_name|
-      metric_samples.latest_for(metric_name)
+    ProjectMetrics.metric_names.map do |metric_name|
+        metric_samples.latest_for(metric_name)
     end
   end
-
-  # create a new button and link to a routes
-  # routes link to the controller
-  # controller
-  # update metrics here
-
 
   def resample_all_metrics
     ProjectMetrics.metric_names.each { |metric_name| resample_metric metric_name }
